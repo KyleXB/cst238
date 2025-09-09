@@ -23,10 +23,6 @@ public class Student {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        //Ask for an input filename and open the file for reading.
-        //Create a Student object for each record (row) in the input
-        //Print the results for each student to the screen, per the format below
-            //Student   (ID#): Average
         System.out.print("Enter input filename: ");
         Scanner in = new Scanner(System.in); //scans in the file name
         Scanner fin = new Scanner(new FileReader(in.next())); //scans in the file
