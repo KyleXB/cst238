@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 /*
- * Title: HW02a_Quiz.java
+ * Title: Student.java
  * Abstract: This program reads in multiple students, their IDs, and their test scores. It then calculates and
  *           prints the average of each students' test scores.
  * Author: Kyle Bulloch
