@@ -59,16 +59,36 @@ public class Student {
     }
 
     public double getAverage() {
-        double tempAvg = 0.0;
-        for (int i = 0; i < 5; i++) {
-            tempAvg += scores[i];
+        //read in scores into a temporary array
+        double[] temp = new double[scores.length];
+        for (int i = 0; i < scores.length; i++) {
+            temp[i] = scores[i];
         }
-        return tempAvg / 5.0;
+
+        //bubble sort to get 4 highest first
+        for (int i = 0; i < temp.length - 1; i++) {
+            for (int j = 0; j < temp.length - 1 - i; j++) {
+                if (temp[j] < temp[j + 1]) {
+                    double tempDoub =  temp[j];
+                    temp[j] = temp[j + 1];
+                    temp[j + 1] = tempDoub;
+                }
+            }
+        }
+
+        //add up first four doubles
+        double tempTotal = 0.0;
+        for (int i = 0; i < 4; i++) {
+            tempTotal += temp[i];
+        }
+
+        //return average
+        return tempTotal / 4;
     }
 
     public String toString() {
-        return name + " (" + id + "): " + ((double)((int)(getAverage() *100.0)))/100.0; // The end is to limit decimals to 2 spaces
+        return name + " (" + id + "): " + getAverage();
     }
-
+// ((double)((int)(getAverage() *100.0)))/100.0
 
 }
