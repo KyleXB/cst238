@@ -44,7 +44,7 @@ public class Student {
 
             Student student = new Student(studentName, studentId);
             student.setScore(studentScores);
-            System.out.println(student.toString());
+            System.out.println(student);
 
 
         }
@@ -89,6 +89,4 @@ public class Student {
     public String toString() {
         return name + " (" + id + "): " + getAverage();
     }
-// ((double)((int)(getAverage() *100.0)))/100.0
-
 }
