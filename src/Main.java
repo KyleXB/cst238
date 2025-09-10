@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Building b1 = new Building("Chavez Hall");
+        BuildingBullochKyle b1 = new BuildingBullochKyle("Chavez Hall");
         b1.addRoom(101, 1, 4);
         b1.addRoom(102, 1, 5);
         b1.addRoom(103, 1, 6);

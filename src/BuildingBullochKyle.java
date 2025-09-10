@@ -1,11 +1,11 @@
-public class Building {
+public class BuildingBullochKyle {
     private String name;
-    private Room[] rooms;
+    private RoomBullochKyle[] rooms;
     private int roomCount;
 
-    public Building(String nm) {
+    public BuildingBullochKyle(String nm) {
         name = nm;
-        rooms = new Room[20];
+        rooms = new RoomBullochKyle[20];
         roomCount = 0;
     }
 
@@ -18,7 +18,7 @@ public class Building {
     }
 
     public void addRoom(int num, int fl, int cap) {
-        rooms[roomCount] = new Room(num, fl, cap);
+        rooms[roomCount] = new RoomBullochKyle(num, fl, cap);
         roomCount++;
     }
 

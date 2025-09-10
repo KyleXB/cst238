@@ -1,9 +1,9 @@
-public class Room {
+public class RoomBullochKyle {
     private int number;
     private int floor;
     private int capacity;
 
-    public Room(int num, int fl, int cap) {
+    public RoomBullochKyle(int num, int fl, int cap) {
         number = num;
         floor = fl;
         capacity = cap;
