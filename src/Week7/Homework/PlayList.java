@@ -63,17 +63,22 @@ public class PlayList {
         System.out.println("Running Binary Search");
         int low = 0;
         int high = size - 1;
+        int firstIndex = -1;
+
         while (low <= high) {
             int mid = (low + high) / 2;
+
             if (playlist[mid].getYear() == year) {
-                return mid;
+                firstIndex = mid;
+                high = mid - 1;
             } else if (playlist[mid].getYear() > year) {
                 high = mid - 1;
             } else {
                 low = mid + 1;
             }
         }
-        return -1;
+
+        return firstIndex;
     }
 
     public int shortestSongIndex() {
@@ -107,7 +112,7 @@ public class PlayList {
     private boolean isSortedByYear() {
         if (size < 2) { return true; } // if the array is just one Song
         for (int i = 1; i < size; i++) {
-            if (playlist[i].getYear() <= playlist[i - 1].getYear()) {
+            if (playlist[i].getYear() < playlist[i - 1].getYear()) {
                 return false;
             }
         }
@@ -122,9 +127,15 @@ public class PlayList {
     }
 
     public String toString() {
+        if (size == 0) {
+            return ("Empty playlist");
+        }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            sb.append((i + 1)).append(". ").append(playlist[i].toString()).append("\n");
+            sb.append((i + 1)).append(". ").append(playlist[i].toString());
+            if  (i != size - 1) {
+                sb.append("\n");
+            }
         }
         return sb.toString();
     }
