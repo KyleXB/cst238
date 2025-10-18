@@ -130,6 +130,7 @@ public class PlayList {
         if (size == 0) {
             return ("Empty playlist");
         }
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
             sb.append((i + 1)).append(". ").append(playlist[i].toString());
