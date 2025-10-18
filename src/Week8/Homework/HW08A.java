@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/*
+ * Title: HW08A.java
+ * Abstract: This class sorts a list using the Collections.sort() method, to show what functions it uses to sort.
+ * Author: Kyle Bulloch
+ * Email: kbulloch@csumb.edu
+ * Estimate: 30 minutes
+ * Date: 10/18/2025
+ */
 public class HW08A {
     public static void main(String[] args) throws IOException {
         ArrayList<String> data = new ArrayList<String>();
