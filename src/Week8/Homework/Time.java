@@ -68,7 +68,7 @@ public class Time implements Comparable<Time>{
             amPm = "PM";
         }
 
-        return String.format("%02d:%02d%s", standardHours, minutes, amPm);
+        return String.format("%2d:%02d%s", standardHours, minutes, amPm);
     }
 
     public String toMilitary() {
@@ -87,4 +87,5 @@ public class Time implements Comparable<Time>{
     public String toString() {
         return toMilitary();
     }
+
 }
