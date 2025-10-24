@@ -29,4 +29,12 @@ public class Food {
     public String toString(){
         return String.format("%s $%.2f %d calories", name, price, calories);
     }
+
+    public int compareCalories(Food f) {
+        return calories - f.getCalories();
+    }
+
+    public int comparePrice(Food f) {
+        return this.getPriceInCents() - f.getPriceInCents();
+    }
 }

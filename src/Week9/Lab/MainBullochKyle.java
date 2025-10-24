@@ -12,12 +12,12 @@ public class MainBullochKyle {
         }
 
         System.out.println("Before partial selection sort:");
-        printArray(data);
+        //printArray(data);
 
-        partialSelectionSort(data);
+        //partialSelectionSort(data);
 
         System.out.println("\nAfter partial selection sort:");
-        printArray(data);
+        //printArray(data);
 
     }
 

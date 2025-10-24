@@ -1,0 +1,9 @@
+8
+Burger 6.50 400
+Ramen 6.75 500
+Tamale 2.85 325
+Chips 1.75 450
+Spaetzle 3.25 375
+Soda 2.50 200
+Cookies 2.75 300
+Fries 3.50 600
