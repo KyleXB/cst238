@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 public class FoldedNumbers {
 
     public static int[] loadNumbers(String filename) {
-
+        return new int[10];
     }
 
     public static void sort(int[] a) {
@@ -52,6 +52,7 @@ public class FoldedNumbers {
         }
 
         //Complete final range flush here
+        return "filler return statement";
     }
 
     public static void main(String[] args) throws FileNotFoundException {
