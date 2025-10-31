@@ -1,6 +1,8 @@
 package Week9.Homework;
 
-import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 
 /*
  * Title: FoldedNumbers.java
@@ -12,8 +14,21 @@ import java.io.FileNotFoundException;
  */
 public class FoldedNumbers {
 
-    public static int[] loadNumbers(String filename) {
-        return new int[10];
+    public static int[] loadNumbers(String filename) throws IOException {
+        FileReader fr = new FileReader(filename);
+        Scanner in = new Scanner(fr);
+
+        int[] nums = new int[in.nextInt()];
+
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = in.nextInt();
+        }
+
+        in.close();
+        fr.close();
+
+        sort(nums);
+        return nums;
     }
 
     public static void sort(int[] a) {
@@ -51,11 +66,26 @@ public class FoldedNumbers {
             }
         }
 
-        //Complete final range flush here
-        return "filler return statement";
+        //grab first and last values
+        int startValue = a[rangeStart];
+        int endValue = a[a.length - 1];
+
+        //this will append the final folded sequence, if need be
+        if (startValue == endValue) {
+            sb.append(startValue);
+        } else {
+            sb.append(startValue).append("-").append(endValue);
+        }
+
+        return sb.toString();
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
+        Scanner fin = new Scanner(System.in);
+        System.out.print("Enter filename: ");
+        String fn = fin.nextLine();
+        int[] data = loadNumbers(fn);
 
+        System.out.println(foldNumbers(data));
     }
 }
