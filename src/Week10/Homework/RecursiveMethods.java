@@ -3,6 +3,14 @@ package Week10.Homework;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+ * Title: RecursiveMethods.java
+ * Abstract: This class contains recursive-based methods to handle various operations mostly relating to arrays/arraylists.
+ * Author: Kyle Bulloch
+ * Email: kbulloch@csumb.edu
+ * Estimate: 2 hours
+ * Date: 10/25/2025
+ */
 public class RecursiveMethods {
     public static void main(String[] args) {
         int [] data = {1, 4, 9, 12, -13, 46, 12, 17, -3, -9, -12};
@@ -42,15 +50,24 @@ public class RecursiveMethods {
 
     public static void fromArray(ArrayList<Integer> dest, int [] source, int start)
     {
+        if (dest.size() == source.length /*|| start == source.length*/) { //once dest has been filled by all values in source, exit recursion
+            return;
+        }
 
+        dest.add(source[start]);
+        fromArray(dest, source, start + 1);
     }
 
     public static int sumArrayList(ArrayList<Integer> list) {
-        return 0;
+        return sumArrayList(list, 0);
     }
 
     public static int sumArrayList(ArrayList<Integer> list, int position) {
-        return 0;
+        if (list.isEmpty() || position >= list.size()) { //if empty list or every list position checked
+            return 0;
+        }
+
+        return list.get(position) + sumArrayList(list, position + 1);
     }
 
     public static boolean isPrime(int base) {
@@ -62,15 +79,30 @@ public class RecursiveMethods {
     }
 
     public static boolean isPrime(int base, int comparison) {
-        return false;
+        if (comparison == base) { //reached if all numbers from 1-base have been tested and haven't been divisible
+            return true;
+        }
+
+        if (base % comparison == 0) {
+            return false;
+        }
+
+        return isPrime(base, comparison + 1);
     }
 
     public static void printFactors(ArrayList<Integer> factors) {
-        System.out.println(printFactors(factors, 0));
+        System.out.println(printFactors(factors, 0)); //this will print out the final product after recursion exits from base case
     }
 
     public static int printFactors(ArrayList<Integer> factors, int start) {
-        return 0;
+        if (start == factors.size() - 1) { //last element reached
+            System.out.print(factors.get(start) + " = ");
+            return factors.get(start);
+        }
+
+        System.out.print(factors.get(start) + " * ");
+
+        return factors.get(start) * printFactors(factors, start + 1); //returns cumulative product
     }
 
     public static ArrayList<Integer> factorNumber(int base) {
@@ -80,8 +112,17 @@ public class RecursiveMethods {
         return al;
     }
 
-    public static void factorNumber(ArrayList<Integer> factors, int base, int
-            comparison) {
+    public static void factorNumber(ArrayList<Integer> factors, int base, int comparison) {
+        if (base == 1) { //if % 1 is reached, exit recursion as it is the last number
+            return;
+        }
+
+        if (base % comparison == 0) { //if divisible to 0, it is a factor
+            factors.add(comparison); //add it to the factor list
+            factorNumber(factors, base / comparison, comparison); //divide by comparison as there might be more of the same prime number
+        } else {
+            factorNumber(factors, base, comparison + 1); //move to next possible factor
+        }
     }
 
     public static int countOdds(int [] a, int size) {
