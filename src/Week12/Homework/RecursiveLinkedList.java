@@ -71,7 +71,7 @@ public class RecursiveLinkedList <T extends Comparable<T>> {
         as such I am coding it such that if there are non-distinct values in the array, it'll simply move to the remaining values.
      */
     public boolean isSorted() {
-        if (isEmpty() || first.getNext() == null) { return true; } //empty list and singular value list is, by default, "sorted"
+        if (isEmpty() || !first.hasNext()) { return true; } //empty list and singular value list is, by default, "sorted"
 
         int compareValue = first.getData().compareTo(first.getNext().getData());
         if (compareValue < 0) {
@@ -89,7 +89,7 @@ public class RecursiveLinkedList <T extends Comparable<T>> {
         if (isEmpty()) {
             first = new Node(value);
             return;
-        } else if (first.getData().compareTo(value) <= 0) {
+        } else if (value.compareTo(first.getData()) <= 0) {
             prepend(value);
         } else {
             first.insertOrderedAscending(value);
@@ -98,11 +98,21 @@ public class RecursiveLinkedList <T extends Comparable<T>> {
 
 
     public void rotate() {
+        if (isEmpty() || !first.hasNext()) { return; }
 
+        Node tempF = first; //store first
+        first = first.getNext(); //make first the second item
+        tempF.setNext(null); //set original firsts next to null
+        first.moveToEnd(tempF); //move it to the end
     }
 
     public void reverse() {
-
+        if (isEmpty() || !first.hasNext()) { return; }
+        else {
+            Node tempF = first;
+            first = first.reverse(first);
+            tempF.setNext(null);
+        }
     }
 
     private class Node {
@@ -134,7 +144,7 @@ public class RecursiveLinkedList <T extends Comparable<T>> {
             if (this.next == null) {
                 return "null";
             }
-            return data + " -> " + next.toString();
+            return data + " -> " + next;
         }
 
         public void append(T value) {
@@ -192,19 +202,28 @@ public class RecursiveLinkedList <T extends Comparable<T>> {
 
         public void insertOrderedAscending(T value) {
             if (next == null) { this.setNext(new Node(value)); }
-            if (next.getData().compareTo(value) >= 0) {
-                this.setNext(new Node(value));
+            if (value.compareTo(next.getData()) <= 0) {
+                Node temp = new Node(value);
+                temp.setNext(next);
+                next = temp;
+                return;
             }
 
-            return;
+            next.insertOrderedAscending(value);
         }
 
         public void moveToEnd(Node n) {
-
+            if (hasNext()) { next.moveToEnd(n); }
+            else { next = n; }
         }
 
         public Node reverse(Node n) {
-            return this;
+            if (!hasNext()) { return this; }
+            else {
+                Node tempN = next.reverse(n);
+                next.next = this;
+                return tempN;
+            }
         }
 
 
