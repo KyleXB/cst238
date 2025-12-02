@@ -8,12 +8,12 @@ public class Hw12_LinkedListTester {
         Random r = new Random(9);
         // this loop is NOT part of the code you will turn in
         for(int i = 0; i < 10; i++) {
-            rll.append(r.nextInt(20));
+            rll.append(r.nextInt(-20,20));
         }
 
         System.out.println(rll);
         for(int i = 0; i < 10; i++) {
-            int remove = r.nextInt(20);
+            int remove = r.nextInt(-20,20);
             System.out.printf("attempting to remove %d: %b%n", remove, rll.remove(remove));
             System.out.println(rll);
         }
