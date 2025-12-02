@@ -83,12 +83,15 @@ public class BST <T extends Comparable<T>> {
     }
 
     public int countLessThan(T value) {
-        if (isEmpty()) { return 0; }
-        return countLessThan(value);
+        if (isEmpty() || (!root.hasLeft() && !root.hasRight())) { return 0; }
+
+        return root.countLessThan(value);
     }
 
     public int searchHeight(T value) {
-        return 0;
+        if (isEmpty()) { return 0; }
+
+        return root.searchHeight(value, 1);
     }
 
     public T shortestLeafValue() {
@@ -101,14 +104,15 @@ public class BST <T extends Comparable<T>> {
     }
 
     public List<T> orderedList() {
+        if (isEmpty()) { return null; }
         List<T> ordered = new ArrayList<>();
-
+        root.orderedList(ordered);
         return ordered;
     }
 
     public List<List<T>> getRows() {
         List<List<T>> nodes = new ArrayList<>();
-
+        if (!isEmpty()) { root.getRows(nodes, 0); }
         return nodes;
     }
 

@@ -1,5 +1,6 @@
 package Week13.Homework;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -117,25 +118,72 @@ public class Node <T extends Comparable<T>> {
     public int countLessThan(T value) {
         int count = 0;
 
+        if (value.compareTo(this.data) <= 0) {
+            if (hasLeft()) {
+                count += left.countLessThan(value);
+            }
+        } else {
+            count++;
 
+            if (hasLeft()) {
+                count += left.countLessThan(value);
+            }
+            if (hasRight()) {
+                count += right.countLessThan(value);
+            }
+        }
 
         return count;
     }
 
     public int searchHeight(T value, int height) {
-        return 0;
+        if (value.compareTo(this.data) == 0) { return height; }
+
+        if (value.compareTo(this.data) < 0) {
+            if (hasLeft()) {
+                return this.left.searchHeight(value, height + 1);
+            }
+            return -1;
+        }
+
+        if (hasRight()) {
+            return this.right.searchHeight(value, height + 1);
+        }
+        return -1;
     }
 
     public T shortestLeafFast(Queue<Node<T>> nodes) {
-        return null;
+        if (isLeaf()) { return this.data; }
+
+        if (hasLeft()) { nodes.add(left); }
+        if (hasRight()) { nodes.add(right); }
+
+        return nodes.remove().shortestLeafFast(nodes);
     }
 
     public void orderedList(List<T> ordered) {
-
+        if (hasLeft()) {
+            left.orderedList(ordered);
+        }
+        ordered.add(data);
+        if (hasRight()) {
+            right.orderedList(ordered);
+        }
     }
 
     public void getRows(List<List<T>> nodes, int row) {
+        if (nodes.size() <= row) {
+            nodes.add(new ArrayList<T>());
+        }
 
+        nodes.get(row).add(this.data);
+
+        if (this.hasLeft()) {
+            left.getRows(nodes, row + 1);
+        }
+        if (hasRight()) {
+            right.getRows(nodes, row + 1);
+        }
     }
 
 }

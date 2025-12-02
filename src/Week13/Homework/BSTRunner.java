@@ -35,7 +35,7 @@ public class BSTRunner {
         System.out.print("Ordered elements: " + b1.orderedList());
 
         List<List<Integer>> rows = b1.getRows();
-        System.out.println(rows);
+        System.out.println("\n" + rows);
 
         System.out.print("Count values less than: ");
         int value = s.nextInt();
