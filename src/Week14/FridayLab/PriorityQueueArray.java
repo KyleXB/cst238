@@ -33,6 +33,7 @@ public class PriorityQueueArray {
     //Update logic of the following method
     public Integer removeMin() {
         return (Integer)0;
+        //Unfinished
     }
 
     public void insert(int item) {
@@ -41,6 +42,7 @@ public class PriorityQueueArray {
             return;
         }
         //Your code here to insert an item in the sorted data array in descending order
+        //Unfinished
     }
 
     public String toString(){

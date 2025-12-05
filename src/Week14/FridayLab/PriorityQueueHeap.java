@@ -17,9 +17,8 @@ public class PriorityQueueHeap {
     public int[] heapSort(){
         int [] sortedData = new int[size - 1];
         int itemCount = size - 1;
-
         //Your code to generate the sorted data from heap and store into the sortedData array
-
+        //Unfinished
         return sortedData;
     }
 
@@ -83,7 +82,8 @@ public class PriorityQueueHeap {
     public void heapifyUp(){
         int index = size - 1;
         while(hasParent(index) && parent(index) > heap[index]){
-            //Add your code here to swap and update index
+            swap(index, parent(index));
+            index = parent(index);
         }
     }
 
@@ -92,10 +92,12 @@ public class PriorityQueueHeap {
             System.out.println("Heap Empty, Cannot Remove");
             return null;
         } else{
-            Integer min = (Integer)heap[1];
+            int min = heap[1]; //minheap should have the smallest value at top
             //Add your code here to update the heap and call heapifyDown
-
-            return min;
+            heap[1] = heap[size-1]; //To remove min, replace the "smallest" value with the last value
+            size--; //update size
+            heapifyDown(); //put current root to its correct position
+            return (Integer) min;
         }
     }
 
@@ -104,8 +106,18 @@ public class PriorityQueueHeap {
         int index = 1;
         while(hasLeftChild(index)) {
             //Add your code here to find the smaller child index
+            int smallerChildIndex = leftChild(index);
+            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+                smallerChildIndex = rightChild(index);
+            } //Smaller child found
 
             //Add your code here to break if parent is smaller, otherwise swap and update the index
+            if (heap[getParentIndex(index)] < heap[leftChild(index)] && heap[getParentIndex(index)] < heap[rightChild(index)]) {
+                break;
+            } else {
+                swap(index, smallerChildIndex);
+            }
+            index = smallerChildIndex;
         }
     }
 

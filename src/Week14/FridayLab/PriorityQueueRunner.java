@@ -5,6 +5,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+ *1. In what situations does an array-based priority queue perform better than a heap-based one?
+ *2. When does a heap-based priority queue offer a clear advantage over an array-based one?
+ *3. Why is it true that in a general heap-based data management scenario, "Heap Data deleted in order" is false, but in a special-case usage, it becomes true?
+ *4. Suppose you have a 10-second limit to run your program. What is the maximum amount of data (# of elements) you can process using heap-based and array-based priority queues for the general case?
+ *
+ *
+ *
+ */
 public class PriorityQueueRunner {
     public static void main(String[] args) {
         int[] testData = {3, 4, 1, -2, 0, 7, 9, 12};
